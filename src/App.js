@@ -28,7 +28,10 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
-
+import Htmldata from "./Database/Html";
+import Cssdata from "./Database/Css/css";
+import Jsdata from "./Database/Js/jsdata";
+import CodeEditor from "./Database/compiler/compiler";
 function App() {
 
   const dispatch = useDispatch();
@@ -41,6 +44,15 @@ function App() {
    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
     <Navbar/>
     <Routes>
+    <Route exact path="/Htmldata" element={<Htmldata/>}/>
+  <Route exact path="/Cssdata" element={<Cssdata/>}/>
+  <Route exact path="/Jsdata" element={<Jsdata/>}/>
+  <Route exact path="/CodeEditor" element={<CodeEditor/>}/>
+
+
+  
+
+
       <Route path="/" element={<Home/>} />
       <Route path="catalog/:catalogName" element={<Catalog/>} />
       <Route path="courses/:courseId" element={<CourseDetails/>} />

@@ -1,43 +1,44 @@
-import { useEffect, useState } from "react"
-import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
-import { BsChevronDown } from "react-icons/bs"
-import { useSelector } from "react-redux"
-import { Link, matchPath, useLocation } from "react-router-dom"
+import './navbar_catalog.css'
+import { useEffect, useState } from "react";
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { BsChevronDown } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Link, NavLink, matchPath, useLocation } from "react-router-dom";
 
-import logo from "../../assets/Logo/Logo-Full-Light.png"
-import { NavbarLinks } from "../../data/navbar-links"
-import { apiConnector } from "../../services/apiconnector"
-import { categories } from "../../services/apis"
-import { ACCOUNT_TYPE } from "../../utils/constants"
-import ProfileDropdown from "../core/Auth/ProfileDropDown"
+import logo from "../../assets/Logo/Logo-Full-Light.png";
+import { NavbarLinks } from "../../data/navbar-links";
+import { apiConnector } from "../../services/apiconnector";
+import { categories } from "../../services/apis";
+import { ACCOUNT_TYPE } from "../../utils/constants";
+import ProfileDropdown from "../core/Auth/ProfileDropDown";
 
 function Navbar() {
-  const { token } = useSelector((state) => state.auth)
-  const { user } = useSelector((state) => state.profile)
-  const { totalItems } = useSelector((state) => state.cart)
-  const location = useLocation()
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const { totalItems } = useSelector((state) => state.cart);
+  const location = useLocation();
 
-  const [subLinks, setSubLinks] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [subLinks, setSubLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
+    (async () => {
+      setLoading(true);
       try {
-        const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setSubLinks(res.data.data)
+        const res = await apiConnector("GET", categories.CATEGORIES_API);
+        setSubLinks(res.data.data);
       } catch (error) {
-        console.log("Could not fetch Categories.", error)
+        console.log("Could not fetch Categories.", error);
       }
-      setLoading(false)
-    })()
-  }, [])
+      setLoading(false);
+    })();
+  }, []);
 
   // console.log("sub links", subLinks)
 
   const matchRoute = (route) => {
-    return matchPath({ path: route }, location.pathname)
-  }
+    return matchPath({ path: route }, location.pathname);
+  };
 
   return (
     <div
@@ -48,7 +49,7 @@ function Navbar() {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <h1 style={{color:'white',fontSize:'2rem'}}>Learn<span style={{color:' #16cbfc',fontWeight:'bold'}}>X</span> </h1>
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
@@ -70,7 +71,7 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
-                        ) : (subLinks && subLinks.length) ? (
+                        ) : subLinks && subLinks.length ? (
                           <>
                             {subLinks
                               ?.filter(
@@ -90,7 +91,25 @@ function Navbar() {
                               ))}
                           </>
                         ) : (
-                          <p className="text-center">No Courses Found</p>
+                          <div className="text-center">
+                            <ul>
+                              <li>
+                                <NavLink to="./Htmldata">HTML</NavLink>
+                              </li>
+                              <li>
+                                <NavLink to="./Cssdata">CSS</NavLink>
+                              </li>
+
+                              <li>
+                                <NavLink to="./Jsdata">JavaScript</NavLink>
+                              </li>
+                              <li>
+                                <NavLink to="./Jsdata">React Js</NavLink>
+                              </li> <li>
+                                <NavLink to="./Jsdata">Node Js</NavLink>
+                              </li>
+                            </ul>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -145,7 +164,7 @@ function Navbar() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

@@ -10,14 +10,16 @@ import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
-  "Articles",
-  "Blog",
-  "Chart Sheet",
   "Code challenges",
-  "Docs",
+  "online compiler",
   "Projects",
-  "Videos",
-  "Workspaces",
+  "Videos"
+
+  
+  
+  
+ 
+  
 ];
 const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
@@ -30,7 +32,7 @@ const Footer = () => {
           {/* Section 1 */}
           <div className="lg:w-[50%] flex flex-wrap flex-row justify-between lg:border-r lg:border-richblack-700 pl-3 lg:pr-5 gap-3">
             <div className="w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
-              <img src={Logo} alt="" className="object-contain" />
+            <h1 style={{color:'white',fontSize:'2rem'}}>Learn<span style={{color:' #16cbfc',fontWeight:'bold'}}>X</span> </h1>
               <h1 className="text-richblack-50 font-semibold text-[16px]">
                 Company
               </h1>
@@ -46,7 +48,7 @@ const Footer = () => {
                   );
                 })}
               </div>
-              <div className="flex gap-3 text-lg">
+              <div className="flex gap-3 text-lg cursor-pointer">
                 <FaFacebook />
                 <FaGoogle />
                 <FaTwitter />
@@ -84,11 +86,11 @@ const Footer = () => {
             </div>
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
-              <h1 className="text-richblack-50 font-semibold text-[16px]">
+              {/* <h1 className="text-richblack-50 font-semibold text-[16px]">
                 Plans
-              </h1>
+              </h1> */}
 
-              <div className="flex flex-col gap-2 mt-2">
+              {/* <div className="flex flex-col gap-2 mt-2">
                 {Plans.map((ele, index) => {
                   return (
                     <div
@@ -101,7 +103,7 @@ const Footer = () => {
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
               <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
                 Community
               </h1>
@@ -124,7 +126,7 @@ const Footer = () => {
           </div>
 
           {/* Section 2 */}
-          <div className="lg:w-[50%] flex flex-wrap flex-row justify-between pl-3 lg:pl-5 gap-3">
+          <div className="lg:w-[50%] flex flex-wrap flex-row justify-center pl-3 lg:pl-5 gap-3">
             {FooterLink2.map((ele, i) => {
               return (
                 <div key={i} className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
@@ -172,7 +174,6 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">Made with ❤️ CodeHelp © 2023 Studynotion</div>
         </div>
       </div>
     </div>
